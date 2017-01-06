@@ -75,6 +75,8 @@ public class GroupListenerAdapter extends BaseAdapter {
             public void onClick(View v) {
                 // 重新绘制
                 Toast.makeText(mContext, "点击删除", Toast.LENGTH_SHORT).show();
+                datas.remove(position);
+                notifyDataSetChanged();
             }
         });
 

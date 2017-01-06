@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //设置下拉刷新
         getRefreshState(PtrFrameLayout.Mode.REFRESH);
         mPtrclassicframelayout.setPtrHandler(new PtrDefaultHandler2() {
             @Override
@@ -56,6 +57,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //自动刷新
         mPtrclassicframelayout.post(new Runnable() {
             @Override
             public void run() {
@@ -63,6 +65,7 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        //设置适配器
         if (adapter == null) {
             adapter = new GroupListenerAdapter(this);
             list.setAdapter(adapter);
@@ -75,13 +78,16 @@ public class MainActivity extends AppCompatActivity {
     private void refresh() {
         List<String> data = new ArrayList<>();
         data.clear();
-        for (int i = 0; i < 100; i++) {
+        for (int i = 0; i < 1000; i++) {
             data.add("条目====================" + i);
         }
         adapter.setGroupInvits(data);
     }
 
-
+    /**
+     * 下拉刷新的配置
+     * @param refreshState
+     */
     private void getRefreshState(PtrFrameLayout.Mode refreshState) {
         PublicUtil.setHeadView(this, mPtrclassicframelayout);
         mPtrclassicframelayout.setLoadingMinTime(1000);
